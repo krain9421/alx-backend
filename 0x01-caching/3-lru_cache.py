@@ -31,7 +31,7 @@ class LRUCache(BaseCaching):
                 del self.cache_data[lrukey]
                 del self.used[lrukey]
         self.cache_data[key] = item
-        self.lrused[key] = count++
+        self.lrused[key] = self.count++
 
     def get(self, key):
         """
@@ -48,7 +48,7 @@ class LRUCache(BaseCaching):
         """
         lru = list(self.lrused.values())[0]
         lrukey = list(self.lrused.keys())[0]
-        for k, v in self.lrused:
+        for k, v in self.lrused.items():
             if v < lru:
                 lrukey = k
         return lrukey
