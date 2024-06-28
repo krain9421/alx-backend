@@ -26,12 +26,12 @@ class LRUCache(BaseCaching):
             return
         if len(self.cache_data) >= BaseCaching.MAX_ITEMS:
             if key not in self.cache_data:
-                print(f"DISCARD: {lru}")
                 lrukey = self.get_lrukey()
+                print(f"DISCARD: {lrukey}")
                 del self.cache_data[lrukey]
-                del self.used[lrukey]
+                del self.lrused[lrukey]
         self.cache_data[key] = item
-        self.lrused[key] = self.count++
+        self.lrused[key] = self.count = self.count + 1
 
     def get(self, key):
         """
