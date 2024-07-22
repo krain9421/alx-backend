@@ -36,12 +36,9 @@ class Server:
 
         return self.__dataset
 
-    def get_hyper(self, page: int = 1, page_size: int = 10) -> Dict[str, Union[Optional[int], List[List]]]:
-        """
-            Function that returns a dictionary
-            containing information about a
-            paginated dataset
-        """
+    def get_hyper(self, page: int = 1, page_size: int = 10) -> Dict:
+
+        # Dict[str, Union[Optional[int], List[List]]]:
         # Verify that both arguments are non-zero integers
         assert isinstance(page, int) and page > 0, "Error"
         assert isinstance(page_size, int) and page_size > 0, "Error"
