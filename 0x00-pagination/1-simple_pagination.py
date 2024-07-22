@@ -37,8 +37,8 @@ class Server:
 
     def get_page(self, page: int = 1, page_size: int = 10) -> List[List]:
         # Verify that both arguments are non-zero integers
-        assert isinstance(page, int) and isinstance(page_size, int)
-        assert page_size > 0 and page > 0
+        assert isinstance(page, int) and page > 0, "Error"
+        assert isinstance(page_size, int) and page_size > 0, "Error"
 
         # Get the index range and start/end indexes
         page_range = index_range(page, page_size)
