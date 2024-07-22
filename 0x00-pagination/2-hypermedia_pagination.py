@@ -56,13 +56,12 @@ class Server:
             result = dataset_n[start: end]
         return result
 
-    def get_hyper(self, page: int = 1, page_size: int = 10) -> Dict[str, Union[int, List[List], Optional[int]]]:
+    def get_hyper(self, page: int = 1, page_size: int = 10) -> Dict:
         """
         Function that returns a dictionary
         that contains info on a paginated dataset
 
-
-        # Dict[str, Union[int, List[List], Optional[int]]:
+        Dict[str, Union[int, List[List], Optional[int]]]
         # Verify that both arguments are non-zero integers
         assert isinstance(page, int) and page > 0, "Error"
         assert isinstance(page_size, int) and page_size > 0, "Error"
@@ -86,11 +85,13 @@ class Server:
         result['page_size'] = len(dataset_f)
         result['page'] = page
         result['data'] = dataset_f
-        if (page_size == 0):
+        #if (page_size == 0):
+        if(page * page_size >= len(dataset_n)):
             result['next_page'] = None
         else:
             result['next_page'] = page + 1
-        if (page - 1 <= 0):
+        #if (page - 1 <= 0):
+        if( (page - 1) * page_size <= 0):
             result['prev_page'] = None
         else:
             result['prev_page'] = page - 1
