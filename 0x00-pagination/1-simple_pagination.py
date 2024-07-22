@@ -39,11 +39,13 @@ class Server:
         # Verify that both arguments are non-zero integers
         assert isinstance(page, int) and isinstance(page_size, int)
         assert page_size > 0 and page > 0
+
+        # Get the index range
         page_range = index_range(page, page_size)
+
         dataset_n = self.dataset()
-        if (page >= len(dataset_n) or page_size >= len(dataset_n)):
+        if (page_range[0] >= len(dataset_n) or page_range[1] >= len(dataset_n)):
             result = []
         else:
             result = dataset_n[page_range[0]: page_range[1]]
         return result
-        pass
