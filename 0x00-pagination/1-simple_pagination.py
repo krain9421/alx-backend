@@ -49,5 +49,5 @@ class Server:
         if (end - start > len(dataset_n)):
             result = []
         else:
-            result = dataset_n[start: end]
+            result = dataset_n[start: end + 1]
         return result
