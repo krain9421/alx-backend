@@ -85,13 +85,11 @@ class Server:
         result['page_size'] = len(dataset_f)
         result['page'] = page
         result['data'] = dataset_f
-        #if (page_size == 0):
         if(page * page_size >= len(dataset_n)):
             result['next_page'] = None
         else:
             result['next_page'] = page + 1
-        #if (page - 1 <= 0):
-        if( (page - 1) * page_size <= 0):
+        if((page - 1) * page_size <= 0):
             result['prev_page'] = None
         else:
             result['prev_page'] = page - 1
