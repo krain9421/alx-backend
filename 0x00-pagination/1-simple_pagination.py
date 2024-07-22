@@ -46,8 +46,8 @@ class Server:
         end = page_range[1]
 
         dataset_n = self.dataset()
-        if (end - start > len(dataset_n)):
+        if (end - start >= len(dataset_n)):
             result = []
         else:
-            result = dataset_n[start: end + 1]
+            result = dataset_n[start: end]
         return result
