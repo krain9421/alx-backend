@@ -41,5 +41,9 @@ class Server:
         assert page_size > 0 and page > 0
         page_range = index_range(page, page_size)
         dataset_n = self.dataset()
-        return dataset_n[page_range[0]: page_range[1]]
+        if (page >= len(dataset_n) or page_size >= len(dataset_n)):
+            result = []
+        else:
+            result = dataset_n[page_range[0]: page_range[1]]
+        return result
         pass
