@@ -37,8 +37,8 @@ class Server:
 
     def get_page(self, page: int = 1, page_size: int = 10) -> List[List]:
         # Verify that both arguments are non-zero integers
-        assert page > 0 and isinstance(page, int)
-        assert page_size > 0 and isinstance(page_size, int)
+        assert isinstance(page, int) and isinstance(page_size, int)
+        assert page_size > 0 and page > 0
         page_range = index_range(page, page_size)
         return self.__dataset[page_range[0]: page_range[1]]
         pass
