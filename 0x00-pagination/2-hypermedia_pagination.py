@@ -2,7 +2,7 @@
 """Python module that implements simple hypermedia pagination"""
 import csv
 import math
-from typing import List, Set, Dict, Tuple, Union
+from typing import List, Set, Dict, Tuple, Union, Optional
 
 
 def index_range(page: int, page_size: int) -> Tuple[int, int]:
@@ -36,7 +36,7 @@ class Server:
 
         return self.__dataset
 
-    def get_hyper(self, page: int = 1, page_size: int = 10) -> Dict[Union[int, List[List]]]:
+    def get_hyper(self, page: int = 1, page_size: int = 10) -> Dict[str, Union[Optional[int], List[List]]]:
         """
         Function that returns a dictionary
         containing information about a
