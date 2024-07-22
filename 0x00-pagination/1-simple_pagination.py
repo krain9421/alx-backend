@@ -12,8 +12,8 @@ def index_range(page: int, page_size: int) -> Tuple[int, int]:
         for those particular pagination parameters.
     """
     start_index = page_size * (page - 1)
-    # end_index = page_size * page
-    end_index = start_index + page_size
+    end_index = page_size * page
+    # end_index = start_index + page_size
     return (start_index, end_index)
 
 
@@ -37,6 +37,9 @@ class Server:
         return self.__dataset
 
     def get_page(self, page: int = 1, page_size: int = 10) -> List[List]:
+        """
+        Function that takes an index ranged and returns a paginated dataset
+        """
         # Verify that both arguments are non-zero integers
         assert isinstance(page, int) and page > 0, "Error"
         assert isinstance(page_size, int) and page_size > 0, "Error"
