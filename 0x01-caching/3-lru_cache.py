@@ -4,6 +4,7 @@ Module that defines a class that inherits from BaseCaching
 """
 from base_caching import BaseCaching
 from dattime import datetime
+import math
 
 
 class LRUCache(BaseCaching):
