@@ -37,7 +37,7 @@ class LRUCache(BaseCaching):
         """
         Method that gets an item by key
         """
-        if key is None:
+        if key is None or key not in self.cache_data:
             return None
         if key in self.cache_data:
             self.lrused[key] = self.lrused[key] + 1
