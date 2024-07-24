@@ -3,6 +3,7 @@
 Module that defines a class that inherits from BaseCaching
 """
 from base_caching import BaseCaching
+from dattime import datetime
 
 
 class LRUCache(BaseCaching):
@@ -31,7 +32,8 @@ class LRUCache(BaseCaching):
                 del self.cache_data[lrukey]
                 del self.lrused[lrukey]
         self.cache_data[key] = item
-        self.lrused[key] = self.count = self.count + 1
+        # self.lrused[key] = self.count = self.count + 1
+        self.lrused[key] = datetime.now()
 
     def get(self, key):
         """
@@ -40,7 +42,7 @@ class LRUCache(BaseCaching):
         if key is None or key not in self.cache_data:
             return None
         if key in self.cache_data:
-            self.lrused[key] = self.lrused[key] + 1
+            self.lrused[key] = datetime.now()
         return self.cache_data.get(key)
 
     def get_lrukey(self):
