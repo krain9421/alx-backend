@@ -46,11 +46,23 @@ class Server:
             """
             assert index is not None and index >= 0, "Error"
             assert isinstance(page_size, int) and page_size > 0, "Error"
+            assert index < len(self.indexed_dataset()), "Error"
 
             dataset_i = self.indexed_dataset()
-            data = list(dataset_i.values())[index: index + page_size]
+            # data = list(dataset_i.values())[index: index + page_size]
+            data = []
+            next_index = index
+
+            for item in range(page_size):
+                while not dataset_i.get(next_index):
+                    next_index += 1
+                data.append(dataset_i.get(next_index))
+                next_index += 1
+
             hyper_i = {"index": index,
-                       "next_index": index + page_size,
+                       # "next_index": index + page_size,
+                       "next_index": next_index,
                        "page_size": len(data),
-                       "data": data}
+                       "data": data
+                       }
             return hyper_i
